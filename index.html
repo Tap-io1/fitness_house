@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fitness House Athens</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(230, 0, 0, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(230, 0, 0, 0.08),
+            transparent 30%
+        );
+
+    pointer-events: none;
+}
+
+/* Subtle red details */
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 500px;
+    height: 2px;
+
+    top: 25%;
+    left: -180px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(230, 0, 0, 0.4),
+        transparent
+    );
+
+    transform: rotate(-25deg);
+
+    opacity: 0.35;
+
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 100%;
+    max-width: 480px;
+
+    margin: 0 auto;
+
+    padding:
+        25px
+        20px
+        35px;
+
+    text-align: center;
+}
+
+/* =========================
+   LOGO
+========================= */
+
+.logo-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+.logo {
+    width: 330px;
+    height: auto;
+
+    max-width: 95vw;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+/* =========================
+   STORE INFO
+========================= */
+
+.store-type {
+    font-size: 12px;
+    letter-spacing: 4px;
+
+    color: #e60000;
+
+    font-weight: 700;
+
+    margin-top: 2px;
+    margin-bottom: 8px;
+
+    text-transform: uppercase;
+}
+
+.address {
+    font-size: 14px;
+
+    color: #d0d0d0;
+
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+/* =========================
+   RED DIVIDER
+========================= */
+
+.divider {
+    width: 80px;
+    height: 2px;
+
+    background: #e60000;
+
+    margin:
+        0 auto
+        25px;
+
+    opacity: 0.8;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+
+    gap: 13px;
+}
+
+.btn {
+    position: relative;
+
+    width: 100%;
+    min-height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    padding: 16px 20px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111111,
+            #181818
+        );
+
+    border:
+        1px solid
+        rgba(230, 0, 0, 0.75);
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.btn::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #e60000;
+
+    border-radius:
+        13px 0 0 13px;
+
+    opacity: 0.9;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #171717,
+            #222222
+        );
+
+    border-color: #ff0000;
+
+    box-shadow:
+        0 8px 25px
+        rgba(230, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   ICONS
+========================= */
+
+.icon {
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    color: #e60000;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer-line {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 32px;
+}
+
+.footer-line::before,
+.footer-line::after {
+    content: "";
+
+    width: 55px;
+    height: 1px;
+
+    background:
+        rgba(230, 0, 0, 0.55);
+}
+
+.footer-symbol {
+    color: #e60000;
+
+    font-size: 22px;
+
+    line-height: 1;
+}
+
+.tagline {
+    margin-top: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: #ffffff;
+
+    opacity: 0.7;
+
+    font-weight: 600;
+}
+
+.footer {
+    margin-top: 24px;
+
+    font-size: 11px;
+
+    color: #777777;
+
+    letter-spacing: 1px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .logo {
+        width: 300px;
+    }
+
+    .btn {
+        min-height: 58px;
+
+        font-size: 14px;
+    }
+
+    .tagline {
+        font-size: 9px;
+        letter-spacing: 4px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- =====================
+         LOGO
+    ====================== -->
+
+    <div class="logo-wrapper">
+
+        <img
+            src="fitness-house-logo.jpeg"
+            class="logo"
+            alt="Fitness House Athens"
+        >
+
+    </div>
+
+
+    <!-- =====================
+         STORE TYPE
+    ====================== -->
+
+    <div class="store-type">
+        Fighting & More
+    </div>
+
+
+    <!-- =====================
+         ADDRESS
+    ====================== -->
+
+    <div class="address">
+        Αιμιλίου Βεάκη 28, Περιστέρι
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <!-- =====================
+         BUTTONS
+    ====================== -->
+
+    <div class="buttons">
+
+
+        <!-- GOOGLE REVIEW -->
+
+        <a
+            class="btn"
+            href="https://search.google.com/local/writereview?placeid=ChIJyU7rMzijoRQRX7F-M698NB8"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+
+                <path
+                    d="M12 3.5l2.63 5.32 5.87.85-4.25 4.14 1 5.85L12 16.9l-5.25 2.76 1-5.85L3.5 9.67l5.87-.85L12 3.5z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linejoin="round"
+                />
+
+            </svg>
+
+            Αφήστε μας μια κριτική
+
+        </a>
+
+
+        <!-- INSTAGRAM -->
+
+        <a
+            class="btn"
+            href="https://www.instagram.com/fitness_house_athens"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+
+                <rect
+                    x="3.5"
+                    y="3.5"
+                    width="17"
+                    height="17"
+                    rx="5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                />
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="4"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                />
+
+                <circle
+                    cx="17.4"
+                    cy="6.7"
+                    r="1"
+                    fill="currentColor"
+                />
+
+            </svg>
+
+            Instagram
+
+        </a>
+
+
+        <!-- WEBSITE -->
+
+        <a
+            class="btn"
+            href="https://www.fitnesshouse.gr/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="8.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                />
+
+                <path
+                    d="M3.8 12h16.4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                />
+
+                <path
+                    d="M12 3.5c2.1 2.3 3.2 5.1 3.2 8.5s-1.1 6.2-3.2 8.5c-2.1-2.3-3.2-5.1-3.2-8.5S9.9 5.8 12 3.5z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                />
+
+            </svg>
+
+            Ιστοσελίδα
+
+        </a>
+
+
+        <!-- LOCATION -->
+
+        <a
+            class="btn"
+            href="https://www.google.com/maps/search/?api=1&query=Fitness%20House%2C%20%CE%91%CE%B9%CE%BC%CE%B9%CE%BB%CE%AF%CE%BF%CF%85%20%CE%92%CE%B5%CE%AC%CE%BA%CE%B7%2028%2C%20%CE%A0%CE%B5%CF%81%CE%B9%CF%83%CF%84%CE%AD%CF%81%CE%B9&query_place_id=ChIJyU7rMzijoRQRX7F-M698NB8"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+
+                <path
+                    d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                />
+
+                <circle
+                    cx="12"
+                    cy="9"
+                    r="2.5"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                />
+
+            </svg>
+
+            Βρείτε μας στον χάρτη
+
+        </a>
+
+
+        <!-- PHONE -->
+
+        <a
+            class="btn"
+            href="tel:2105765982"
+        >
+
+            <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+            >
+
+                <path
+                    d="M6.5 3.8l3 3.1-2 2.5c1.2 2.5 2.6 3.9 5.1 5.1l2.5-2 3.1 3c.7.7.7 1.8 2.4 2.4l-1.3 1.3c-.8.8-2 1.1-3.1.7-5.4-1.9-9.8-6.3-11.7-11.7-.4-1.1-.1-2.3.7-3.1l1.3-1.3c.6-.7 1.7-.7 2.4 0z"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linejoin="round"
+                />
+
+            </svg>
+
+            210 576 5982
+
+        </a>
+
+    </div>
+
+
+    <!-- =====================
+         FOOTER
+    ====================== -->
+
+    <div class="footer-line">
+
+        <div class="footer-symbol">
+            ★
+        </div>
+
+    </div>
+
+
+    <div class="tagline">
+        FIGHTING AND MORE
+    </div>
+
+
+    <div class="footer">
+        © FITNESS HOUSE ATHENS
+    </div>
+
+</div>
+
+</body>
+</html>
